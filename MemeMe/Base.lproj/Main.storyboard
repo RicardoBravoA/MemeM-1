@@ -26,9 +26,14 @@
                                     <constraint firstAttribute="height" constant="44" id="Qr4-rH-ape"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Pick" id="VqQ-TS-OFt">
+                                    <barButtonItem title="Image From Photos" id="VqQ-TS-OFt">
                                         <connections>
-                                            <action selector="pickImage:" destination="BYZ-38-t0r" id="abU-64-dKy"/>
+                                            <action selector="pickImageFromPhotos:" destination="BYZ-38-t0r" id="hHy-i5-bLa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Image From Camera" id="9k7-OW-EEg">
+                                        <connections>
+                                            <action selector="imageFromCamera:" destination="BYZ-38-t0r" id="rTB-2V-XBI"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -43,7 +48,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageViewPicker" destination="xQ2-xY-uNm" id="mQ8-Zq-hVP"/>
+                        <outlet property="cameraButton" destination="9k7-OW-EEg" id="WMs-Sp-nEo"/>
+                        <outlet property="imageView" destination="xQ2-xY-uNm" id="ttK-EJ-1fG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
