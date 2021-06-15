@@ -37,19 +37,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Do any additional setup after loading the view.
         pickerController.delegate = self
         
-        headerText.defaultTextAttributes = memeTextAttributes
-        footerText.defaultTextAttributes = memeTextAttributes
+        setupTextField(textField: headerText)
+        setupTextField(textField: footerText)
         
-        headerText.textAlignment = .center
-        footerText.textAlignment = .center
-        
-        headerText.font = UIFont(name: "impact", size: 30)
-        footerText.font = UIFont(name: "impact", size: 30)
-        
-        headerText.delegate = self
-        footerText.delegate = self
-        
-        initScreen()
+        defaultScreen()
 
     }
     
@@ -61,11 +52,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(_ animated: Bool) {
         unsuscribeFromKeyboardNotifications()
     }
-
-    @IBAction func pickImageFromAlbum(_ sender: Any) {
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true, completion: nil)
-    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
@@ -76,8 +62,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.shareButton.isEnabled = true
     }
     
+    @IBAction func pickImageFromAlbum(_ sender: Any) {
+        presentPickerViewController(source: .photoLibrary)
+    }
+    
     @IBAction func imageFromCamera(_ sender: Any) {
-        pickerController.sourceType = .camera
+        presentPickerViewController(source: .camera)
+    }
+    
+    private func presentPickerViewController(source: UIImagePickerController.SourceType) {
+        pickerController.sourceType = source
         present(pickerController, animated: true, completion: nil)
     }
     
@@ -130,7 +124,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func generateMemeImage() -> UIImage {
-
         // hide controls
         self.topToolbar.isHidden = true
         self.bottomToolbar.isHidden = true
@@ -164,10 +157,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        initScreen()
+        defaultScreen()
     }
     
-    private func initScreen(){
+    private func defaultScreen(){
         headerText.text = Text.TOP.rawValue
         footerText.text = Text.BOTTOM.rawValue
         imageView.image = nil
@@ -185,6 +178,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 print("error saving file:", error)
             }
         }
+    }
+    
+    private func setupTextField(textField: UITextField) {
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.font = UIFont(name: "impact", size: 30)
+        textField.delegate = self
     }
     
 }
