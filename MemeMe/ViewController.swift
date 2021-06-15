@@ -85,7 +85,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.scrollView.isScrollEnabled = true
         let info = notification.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height + 50 , right: 0.0)
+        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height + 40 , right: 0.0)
 
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
@@ -152,6 +152,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memeImage = generateMemeImage()
         let meme = Meme(topText: headerText.text!, bottomText: footerText.text!, originalImage: imageView.image!, memeImage: memeImage)
         let activityViewController = UIActivityViewController(activityItems: [ meme.memeImage ], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if completed {
+                // User completed activity
+                self.saveImageToDocumentDirectory(image: meme.memeImage)
+            }
+            
+        }
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -165,6 +172,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         footerText.text = Text.BOTTOM.rawValue
         imageView.image = nil
         shareButton.isEnabled = false
+    }
+    
+    private func saveImageToDocumentDirectory(image: UIImage ) {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileName = "image-meme-\(NSDate().timeIntervalSince1970).png" // name of the image to be saved
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        if let data = image.jpegData(compressionQuality: 1.0),!FileManager.default.fileExists(atPath: fileURL.path){
+            do {
+                try data.write(to: fileURL)
+            } catch {
+                print("error saving file:", error)
+            }
+        }
     }
     
 }
