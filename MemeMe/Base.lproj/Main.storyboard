@@ -32,6 +32,11 @@
                                             <action selector="imageFromCamera:" destination="BYZ-38-t0r" id="rTB-2V-XBI"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Save" id="1Jr-4a-xRP" userLabel="Save">
+                                        <connections>
+                                            <action selector="saveMeme:" destination="BYZ-38-t0r" id="0zg-DV-dLm"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYw-U1-ZtS">
@@ -98,6 +103,7 @@
                         <outlet property="headerText" destination="7qs-Pz-cLh" id="3tG-sd-k17"/>
                         <outlet property="imageView" destination="uyc-tG-aGH" id="J7l-Qk-146"/>
                         <outlet property="scrollView" destination="PYw-U1-ZtS" id="g6g-Oo-jWG"/>
+                        <outlet property="toolbar" destination="FMt-5w-QJs" id="OPa-eO-WXm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

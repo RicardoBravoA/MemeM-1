@@ -14,6 +14,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var headerText: UITextField!
     @IBOutlet weak var footerText: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var toolbar: UIToolbar!
     var activeField: UITextField?
     
     let pickerController = UIImagePickerController()
@@ -126,4 +127,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    func generateMemeImage() -> UIImage {
+
+        // hide controls
+        
+        self.toolbar.isHidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        imageView.image = memedImage
+        
+        // show controls
+        self.toolbar.isHidden = false
+        
+        return memedImage
+    }
+    
+    @IBAction func saveMeme(_ sender: Any) {
+        let meme = Meme(topText: headerText.text!, bottomText: footerText.text!, originalImage: imageView.image!, memeImage: generateMemeImage())
+        print(meme)
+    }
 }
