@@ -24,6 +24,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         .strokeWidth: -3.5
     ]
     
+    enum Text: String, CaseIterable {
+        case TOP = "TOP"
+        case BOTTOM = "BOTTOM"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -41,8 +46,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         headerText.delegate = self
         footerText.delegate = self
         
-        headerText.text = "TOP"
-        footerText.text = "BOTTOM"
+        headerText.text = Text.TOP.rawValue
+        footerText.text = Text.BOTTOM.rawValue
 
     }
     
@@ -92,7 +97,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func keyboardWillHide(notification: Notification){
-        var info = notification.userInfo!
+        let info = notification.userInfo!
         let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
         self.scrollView.contentInset = contentInsets
