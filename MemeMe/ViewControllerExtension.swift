@@ -11,7 +11,13 @@ extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("The text is "+textField.text!)
-        if textField.text == "WRITE HERE" {
+        self.activeField = textField
+        
+        if textField.text == "TOP" {
+            textField.text = ""
+        }
+        
+        if textField.text == "BOTTOM" {
             textField.text = ""
         }
     }
@@ -20,6 +26,10 @@ extension ViewController: UITextFieldDelegate {
         print("The text is "+textField.text!)
         textField.resignFirstResponder()
         return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField){
+        self.activeField = nil
     }
     
 }
