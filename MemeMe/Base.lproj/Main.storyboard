@@ -3,10 +3,15 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="impact.ttf">
+            <string>Impact</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -16,11 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xQ2-xY-uNm">
-                                <rect key="frame" x="71" y="334" width="272" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMt-5w-QJs">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="FMt-5w-QJs">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Qr4-rH-ape"/>
@@ -38,17 +39,42 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xQ2-xY-uNm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YfY-Fn-6AQ">
+                                <rect key="frame" x="20" y="772" width="374" height="26"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dc6-a4-sPa" userLabel="Header Text">
+                                <rect key="frame" x="20" y="64" width="374" height="26"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6Ni-XN-aPJ"/>
+                            <constraint firstItem="YfY-Fn-6AQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6oW-Ga-Ca5"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="K8E-4X-wgo"/>
+                            <constraint firstItem="FMt-5w-QJs" firstAttribute="top" secondItem="YfY-Fn-6AQ" secondAttribute="bottom" constant="20" id="KPB-4I-myo"/>
+                            <constraint firstItem="dc6-a4-sPa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="NLD-ZD-ryQ"/>
+                            <constraint firstItem="FMt-5w-QJs" firstAttribute="top" secondItem="xQ2-xY-uNm" secondAttribute="bottom" id="PNI-64-e74"/>
                             <constraint firstItem="FMt-5w-QJs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VS4-Qq-r9C"/>
+                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="i5e-RP-2nH"/>
+                            <constraint firstItem="dc6-a4-sPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jhd-ly-k1g"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dc6-a4-sPa" secondAttribute="trailing" constant="20" id="klt-gA-6fQ"/>
+                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oDo-Kk-4Bt"/>
+                            <constraint firstItem="xQ2-xY-uNm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ofs-0m-H3N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YfY-Fn-6AQ" secondAttribute="trailing" constant="20" id="tTP-12-nbN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="9k7-OW-EEg" id="WMs-Sp-nEo"/>
+                        <outlet property="footerText" destination="YfY-Fn-6AQ" id="SqF-Vq-RbY"/>
+                        <outlet property="headerText" destination="dc6-a4-sPa" id="oOW-zH-4Pb"/>
                         <outlet property="imageView" destination="xQ2-xY-uNm" id="ttK-EJ-1fG"/>
                     </connections>
                 </viewController>
@@ -58,8 +84,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

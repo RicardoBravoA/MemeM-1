@@ -13,6 +13,8 @@
 		C64C39832677F83C009E4487 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C64C39812677F83C009E4487 /* Main.storyboard */; };
 		C64C39852677F83D009E4487 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C64C39842677F83D009E4487 /* Assets.xcassets */; };
 		C64C39882677F83D009E4487 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C64C39862677F83D009E4487 /* LaunchScreen.storyboard */; };
+		C64C399126780D55009E4487 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C64C399026780D55009E4487 /* impact.ttf */; };
+		C64C3993267813CB009E4487 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C3992267813CB009E4487 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		C64C39842677F83D009E4487 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C64C39872677F83D009E4487 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C64C39892677F83D009E4487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C64C399026780D55009E4487 /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = impact.ttf; path = ../../../../../../Downloads/impact/impact.ttf; sourceTree = "<group>"; };
+		C64C3992267813CB009E4487 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +67,18 @@
 				C64C39842677F83D009E4487 /* Assets.xcassets */,
 				C64C39862677F83D009E4487 /* LaunchScreen.storyboard */,
 				C64C39892677F83D009E4487 /* Info.plist */,
+				C64C3992267813CB009E4487 /* ViewControllerExtension.swift */,
+				C64C398F26780CF0009E4487 /* Resources */,
 			);
 			path = MemeMe;
+			sourceTree = "<group>";
+		};
+		C64C398F26780CF0009E4487 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C64C399026780D55009E4487 /* impact.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64C399126780D55009E4487 /* impact.ttf in Resources */,
 				C64C39882677F83D009E4487 /* LaunchScreen.storyboard in Resources */,
 				C64C39852677F83D009E4487 /* Assets.xcassets in Resources */,
 				C64C39832677F83C009E4487 /* Main.storyboard in Resources */,
@@ -137,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64C3993267813CB009E4487 /* ViewControllerExtension.swift in Sources */,
 				C64C39802677F83C009E4487 /* ViewController.swift in Sources */,
 				C64C397C2677F83B009E4487 /* AppDelegate.swift in Sources */,
 				C64C397E2677F83C009E4487 /* SceneDelegate.swift in Sources */,
